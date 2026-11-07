@@ -1,0 +1,6 @@
+.venv
+.env
+__pycache__
+*.pyc
+tasks.db
+temp_image.jpg

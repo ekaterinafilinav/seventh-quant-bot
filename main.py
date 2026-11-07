@@ -18,10 +18,14 @@ from maxapi.types import CallbackButton, MessageCallback, MessageCreated
 from maxapi.utils.inline_keyboard import InlineKeyboardBuilder
 from dates import extract_date, extract_time, pretty, find_type
 from db import add_task, get_tasks, init_db, get_due_tasks, mark_as_reminded, mark_as_done, delete_old_completed_tasks, delete_task, get_user_stats, connect
+import sys
 
 logging.basicConfig(level=logging.INFO)
 load_dotenv()
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+if sys.platform == "win32":
+    pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+else:
+    pytesseract.pytesseract.tesseract_cmd = "tesseract"
 bot = Bot(token=os.getenv("BOT_TOKEN"))
 waiting_for_delete_input = None # Может быть "date", "num" или None
 dp = Dispatcher()    # диспетчер решает, какой обработчик вызвать
