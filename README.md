@@ -16,8 +16,13 @@
 
 ## Как запустить проект (через Docker)
 
-Для запуска потребуется установленный Docker.
+Самый простой способ запустить бота — скачать готовый образ из Docker Hub.
 
-1. Соберите Docker-образ:
+1. Скачайте образ:
    ```bash
-   docker build -t seventh-quant-bot .
+   docker pull ekaterinafilina/seventh-quant-bot
+   
+2. Запустите контейнер (замените ВАШ_ТОКЕН на токен вашего бота в MAX):
+
+```bash
+docker run -e BOT_TOKEN=ВАШ_ТОКЕН ekaterinafilina/seventh-quant-bot
